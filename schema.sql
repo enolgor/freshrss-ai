@@ -1,0 +1,14 @@
+CREATE TABLE feed (
+  id INTEGER PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE entry (
+  id BIGINT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  link VARCHAR(1024) NOT NULL,
+  date INTEGER NOT NULL,
+  is_read BOOLEAN NOT NULL,
+  id_feed INTEGER NOT NULL references(feed),
+  content TEXT
+);
