@@ -3,9 +3,7 @@ name: Build and Release Binary
 on:
   push:
     tags:
-      - 'v*'  # Trigger only on version-like tags (e.g., v1.0.0)
-    branches:
-      - master
+      - 'v*'
 
 jobs:
   build:
