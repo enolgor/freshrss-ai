@@ -36,11 +36,6 @@ Use the information below as reference material only — do **not** echo it dire
 `
 
 const report = `
----
-layout: default
-title: {{ .Date }}
----
-
 # {{ .Date }}
 
 {{ .AiSummary }}
