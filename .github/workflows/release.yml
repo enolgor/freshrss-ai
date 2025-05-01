@@ -1,0 +1,32 @@
+name: Build and Release Binary
+
+on:
+  push:
+    tags:
+      - '*'
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.23'
+
+    - name: Build Binary for Linux AMD64
+      run: |
+        GOOS=linux GOARCH=amd64 go build -o news-reporter-amd64 main.go
+
+    - name: Upload Release Asset
+      uses: softprops/action-gh-release@v1
+      with:
+        files: news-reporter-amd64
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
